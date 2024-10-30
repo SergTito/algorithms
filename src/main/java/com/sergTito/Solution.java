@@ -4,6 +4,7 @@ package com.sergTito;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Input: l1 = [2,4,3], l2 = [5,6,4]
@@ -15,48 +16,47 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        int resultA = 0;
-        int resultB = 0;
-
-
-//        int[] a = {4, 5, 6, 2};
-//        int[] b = {2, 4, 3, 1};
-        List<Integer> arr = List.of(1,2,3,4);
-        List<Integer> brr = List.of(2, 4, 3, 1);
-
-        for (int i = 0; i < arr.size(); i++) {
-            if (arr.get(i) > brr.get(i)){
-
-            }
-        }
-
-
-//        for (int i = 0; i < a.length; i++) {
-//            if (a[i] < b[i]) {
-//                resultB++;
-//            } else if (a[i] > b[i]) {
-//                resultA++;
-//            }
+        List<String> arr = new ArrayList<>();
+        arr.add("privet");
+        arr.add("poke");
+        arr.add("ok");
+        arr.add("hello");
+//
+//        for (int i = 0; i < arr.size(); i++) {
+//          arr.set(i, String.valueOf(arr.get(i).length()));
+//
 //        }
 
-        System.out.println(resultA + " " + resultB);
+
+
+        List<Integer> list2 = arr.stream()
+                .map(element->element.length())
+                .collect(Collectors.toList());
+        System.out.println(list2);
+
+
+
+        Auto auto1 = new Auto("Audi",201);
+        Auto auto2 = new Auto("BMW",100);
+        Auto auto3 = new Auto("Mersedes",251);
+        Auto auto4 = new Auto("Toyota",301);
+        List<Auto> autos = new ArrayList<>();
+        autos.add(auto1);
+        autos.add(auto2);
+        autos.add(auto3);
+        autos.add(auto4);
+
+        autos = autos.stream()
+                .filter(auto -> auto.getName().equalsIgnoreCase("bmw") || auto.getMaxSpeed() == 301)
+                .collect(Collectors.toList());
+        System.out.println(autos);
+
+
+
+
+
     }
-//    public int[] addTwoNumbers(int[] l1, int[] l2) {
-//
-//        l1 = new int[]{1, 3, 5};
-//        l2 = new int[]{4, 10, 22};
-//
-//        int a;
-//        int b;
-//
-//        for (int i = 0; i < l1.length; i++) {
-//            a = l1[i];
-//        }
-//
-//
-//
-//
-//        return ;
-//
-//    }
+
+
+
 }
