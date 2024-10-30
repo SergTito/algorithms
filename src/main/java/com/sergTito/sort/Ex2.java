@@ -5,6 +5,7 @@ import java.util.Random;
 public class Ex2 {
     public static void main(String[] args) {
 
+        int randomArrValue = 0;
         /*
           Реализуйте функцию сортировки выбором в Java, которая будет работать с массивом целых чисел.
           Напишите программу, которая будет генерировать случайные числа и отсортировать их с помощью этого алгоритма.
@@ -14,14 +15,15 @@ public class Ex2 {
         int[] arr = new int[20];
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(120);
+            arr[i] = random.nextInt(20);
             System.out.print(arr[i] + " ");
         }
         System.out.println();
         sortArr(arr);
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]+ " ");
+            System.out.print(arr[i] + " ");
         }
+        randomArrValue = random.nextInt(arr[random.nextInt(20)]);
 
 
         /*
@@ -30,6 +32,8 @@ public class Ex2 {
         Попробуйте найти элементы в массиве с помощью бинарного поиска и сравните время выполнения с простым линейным поиском.
          */
 
+
+        System.out.println(sortBinarySearchNum(randomArrValue, arr) + " " + randomArrValue);
 
 
     }
@@ -40,7 +44,7 @@ public class Ex2 {
             int min = arr[i];
 
             for (int j = 1 + i; j < arr.length; j++) {
-                if (arr[j] < min){
+                if (arr[j] < min) {
                     min = arr[j];
                     pos = j;
                 }
@@ -50,5 +54,23 @@ public class Ex2 {
         }
 
 
+    }
+
+    private static int sortBinarySearchNum(int num, int[] arr) {
+        int min = arr[0];
+        int max = arr[arr.length - 1];
+
+
+
+        while (min <= max) {
+            int mid = (min + max) / 2;
+            int guess = arr[mid];
+            if (guess == num) {
+                return mid;
+            } else if (guess > num) {
+                max = mid - 1;
+            } else min = mid + 1;
+        }
+        return -1;
     }
 }
